@@ -1,0 +1,29 @@
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS favorite_beers;
+DROP TABLE IF EXISTS beers;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id BIGSERIAL PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password_digest VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE beers (
+  id BIGSERIAL PRIMARY KEY,
+  beer VARCHAR(140) NOT NULL,
+  state_brewed VARCHAR(100) NOT NULL,
+  feels VARCHAR(140)
+);
+
+CREATE TABLE favorite_beers(
+  id BIGSERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users (id),
+  beer_id INTEGER REFERENCES beers (id)
+);
+
+COMMIT;
