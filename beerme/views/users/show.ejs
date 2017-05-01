@@ -9,9 +9,10 @@
     <script src="/script.js"></script>
   </head>
   <body>
-    <% include ../partials/header %>
+    <div class="show-header">
+      <% include ../partials/header %>
+    </div>
     <main>
-      <% include ../partials/beers %>
       <h3>whatcha tastin?</h3>
       <form action="/beers" method="POST">
         <input type="text" name="beer[beer]" placeholder="beer name"><br>
@@ -20,5 +21,7 @@
         <input type="submit" value="submit beer">
       </form>
     </main>
+    <% include ../partials/beers %>
+    <div class="overlay"></div>
   </body>
 </html>

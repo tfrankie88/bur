@@ -1,12 +1,13 @@
-<% beers.forEach((beer) => { %>
-<div>
-  <h2><%= beer.beer %></h2>
-  <p><%= beer.state_brewed %></p>
-  <p><%= beer.feels %></p>
-  <form action="/beers/favs" method="post">
-    <!-- Thanks Alessa for explaining input type hidden -->
-    <input type="hidden" name="beer[id]" value="<%= beer.id %>">
-    <input type="submit" value="like">
-  </form>
-</div>
+<% beers.forEach((beer, user) => { %>
+  <div class="da-beers">
+    <h2><%= beer.beer %></h2>
+    <p><%= beer.state_brewed %></p>
+    <p><%= beer.feels %></p>
+    <form action="/beers/favs" method="post">
+      <!-- Thanks Alessa for explaining input type hidden -->
+      <input type="hidden" name="user[id]" value="<%= user.id %>">
+      <input type="hidden" name="beer[id]" value="<%= beer.id %>">
+      <input type="submit" value="like">
+    </form>
+  </div>
 <% }); %>

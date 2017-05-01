@@ -29,6 +29,14 @@ Beer.addBeerUser = (beerId, userId) => {
   );
 }
 
+Beer.checkFav = (userId, beerId) => {
+  return db.oneOrNone(
+    `SELECT * FROM
+      favorite_beers WHERE userId = user_id
+      AND beerId = beerId`
+  )
+}
+
 Beer.favoriteBeers = (userId) => {
   console.log(userId)
 	return db.manyOrNone(
